@@ -42,13 +42,16 @@ public class CoffeeMachine {
     }
 
     public void boilCoffee() {
+        if (!enabled) {
+            throw new IllegalStateException("Coffee machine is disabled");
+        }
         if (!hasWater) {
             throw new IllegalStateException("No water");
         }
         if (!hasGroundCoffee) {
             throw new IllegalStateException("No ground coffee");
         }
-        if (!hasCoffee) {
+        if (hasCoffee) {
             throw new IllegalStateException("Coffee already boiled");
         }
         hasWater = false;
