@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/data/postgres:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: coffee-machines-db
+      POSTGRES_USER: bebrauser
+      POSTGRES_PASSWORD: bebrapass
+    restart: always
