@@ -36,4 +36,8 @@ public class CoffeeMachineService {
                 () -> new CoffeeMachineNotFound(String.format("Coffee machine with id %d not found", id)));
         return mapper.toDto(coffeeMachine);
     }
+
+    public void deleteCoffeeMachine(int id) {
+        repository.deleteById(id);
+    }
 }

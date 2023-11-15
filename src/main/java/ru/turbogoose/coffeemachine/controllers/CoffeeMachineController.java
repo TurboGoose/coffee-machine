@@ -1,6 +1,5 @@
 package ru.turbogoose.coffeemachine.controllers;
 
-import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.turbogoose.coffeemachine.dtos.CoffeeMachineResponseDto;
@@ -27,6 +26,11 @@ public class CoffeeMachineController {
     @GetMapping("/{id}")
     public CoffeeMachineResponseDto getCoffeeMachine(@PathVariable int id) {
         return service.getCoffeeMachine(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCoffeeMachine(@PathVariable int id) {
+        service.deleteCoffeeMachine(id);
     }
 
     @ExceptionHandler(CoffeeMachineNotFound.class)
