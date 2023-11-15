@@ -2,6 +2,7 @@ package ru.turbogoose.coffeemachine.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.turbogoose.coffeemachine.dtos.CoffeeMachineResponseDto;
 import ru.turbogoose.coffeemachine.dtos.CoffeeMachinesResponseDto;
 import ru.turbogoose.coffeemachine.mappers.CoffeeMachineMapper;
 import ru.turbogoose.coffeemachine.models.CoffeeMachine;
@@ -22,5 +23,10 @@ public class CoffeeMachineService {
                         .map(mapper::toDto)
                         .toList())
                 .build();
+    }
+
+    public CoffeeMachineResponseDto createCoffeeMachine() {
+        CoffeeMachine coffeeMachine = repository.save(new CoffeeMachine());
+        return mapper.toDto(coffeeMachine);
     }
 }
