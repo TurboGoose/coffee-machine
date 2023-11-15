@@ -1,11 +1,12 @@
 package ru.turbogoose.coffeemachine.controllers;
 
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.turbogoose.coffeemachine.dtos.CoffeeMachineResponseDto;
 import ru.turbogoose.coffeemachine.dtos.CoffeeMachinesResponseDto;
+import ru.turbogoose.coffeemachine.dtos.ErrorResponseDto;
+import ru.turbogoose.coffeemachine.exceptions.CoffeeMachineNotFound;
 import ru.turbogoose.coffeemachine.services.CoffeeMachineService;
 
 @RestController
@@ -21,5 +22,17 @@ public class CoffeeMachineController {
     @PostMapping("/")
     public CoffeeMachineResponseDto createCoffeeMachine() {
         return service.createCoffeeMachine();
+    }
+
+    @GetMapping("/{id}")
+    public CoffeeMachineResponseDto getCoffeeMachine(@PathVariable int id) {
+        return service.getCoffeeMachine(id);
+    }
+
+    @ExceptionHandler(CoffeeMachineNotFound.class)
+    public ErrorResponseDto handleNotFound(RuntimeException exception) {
+        return ErrorResponseDto.builder()
+                .message(exception.getMessage())
+                .build();
     }
 }
