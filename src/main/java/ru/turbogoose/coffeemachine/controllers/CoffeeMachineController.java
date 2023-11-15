@@ -8,6 +8,9 @@ import ru.turbogoose.coffeemachine.dtos.CoffeeMachinesResponseDto;
 import ru.turbogoose.coffeemachine.dtos.ErrorResponseDto;
 import ru.turbogoose.coffeemachine.exceptions.CoffeeMachineNotFound;
 import ru.turbogoose.coffeemachine.services.CoffeeMachineService;
+import ru.turbogoose.coffeemachine.services.Ingredient;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -43,6 +46,13 @@ public class CoffeeMachineController {
     @PutMapping("/{id}/disable")
     public CoffeeMachineResponseDto disableCoffeeMachine(@PathVariable int id) {
         return service.disableCoffeeMachine(id);
+    }
+
+    @PostMapping("/{id}/fill")
+    public CoffeeMachineResponseDto fillCoffeeMachineWithIngredients(
+            @PathVariable int id,
+            @RequestParam("ingredient") List<Ingredient> ingredients) {
+        return service.fillCoffeeMachineWithIngredients(id, ingredients);
     }
 
     @ExceptionHandler(CoffeeMachineNotFound.class)

@@ -57,4 +57,19 @@ public class CoffeeMachineService {
         coffeeMachine.disable();
         return mapper.toDto(coffeeMachine);
     }
+
+    @Transactional
+    public CoffeeMachineResponseDto fillCoffeeMachineWithIngredients(int id, List<Ingredient> ingredients) {
+        CoffeeMachine coffeeMachine = repository.findById(id).orElseThrow(
+                () -> new CoffeeMachineNotFound(String.format("Coffee machine with id %d not found", id)));
+        ingredients.stream()
+                .distinct()
+                .forEach(ingredient -> {
+                    switch (ingredient) {
+                        case water -> coffeeMachine.fillWater();
+                        case groundcoffee -> coffeeMachine.fillGroundCoffee();
+                    }
+                });
+        return mapper.toDto(coffeeMachine);
+    }
 }
