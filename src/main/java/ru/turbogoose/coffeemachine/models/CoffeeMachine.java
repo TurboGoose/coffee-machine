@@ -1,9 +1,6 @@
 package ru.turbogoose.coffeemachine.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -11,52 +8,57 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "coffee_machines")
 public class CoffeeMachine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private boolean hasWater;
-    private boolean hasGroundCoffee;
-    private boolean hasCoffee;
+    @Column(name = "water_filled")
+    private boolean waterFilled;
+    @Column(name = "ground_coffee_filled")
+    private boolean groundCoffeeFilled;
+    @Column(name = "coffee_filled")
+    private boolean coffeeFilled;
+    @Column(name = "enabled")
     private boolean enabled;
 
     public void fillWater() {
-        if (hasWater) {
+        if (waterFilled) {
             throw new IllegalStateException("Water already filled");
         }
-        hasWater = true;
+        waterFilled = true;
     }
 
     public void fillGroundCoffee() {
-        if (hasGroundCoffee) {
+        if (groundCoffeeFilled) {
             throw new IllegalStateException("Ground coffee already filled");
         }
-        hasGroundCoffee = true;
+        groundCoffeeFilled = true;
     }
 
     public void pourCoffee() {
-        if (!hasCoffee) {
+        if (!coffeeFilled) {
             throw new IllegalStateException("No coffee boiled");
         }
-        hasCoffee = false;
+        coffeeFilled = false;
     }
 
     public void boilCoffee() {
         if (!enabled) {
             throw new IllegalStateException("Coffee machine is disabled");
         }
-        if (!hasWater) {
+        if (!waterFilled) {
             throw new IllegalStateException("No water");
         }
-        if (!hasGroundCoffee) {
+        if (!groundCoffeeFilled) {
             throw new IllegalStateException("No ground coffee");
         }
-        if (hasCoffee) {
+        if (coffeeFilled) {
             throw new IllegalStateException("Coffee already boiled");
         }
-        hasWater = false;
-        hasGroundCoffee = false;
-        hasCoffee = true;
+        waterFilled = false;
+        groundCoffeeFilled = false;
+        coffeeFilled = true;
     }
 
     public void enable() {
