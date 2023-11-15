@@ -1,5 +1,6 @@
 package ru.turbogoose.coffeemachine.services;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.turbogoose.coffeemachine.dtos.CoffeeMachineResponseDto;
@@ -39,5 +40,21 @@ public class CoffeeMachineService {
 
     public void deleteCoffeeMachine(int id) {
         repository.deleteById(id);
+    }
+
+    @Transactional
+    public CoffeeMachineResponseDto enableCoffeeMachine(int id) {
+        CoffeeMachine coffeeMachine = repository.findById(id).orElseThrow(
+                () -> new CoffeeMachineNotFound(String.format("Coffee machine with id %d not found", id)));
+        coffeeMachine.enable();
+        return mapper.toDto(coffeeMachine);
+    }
+
+    @Transactional
+    public CoffeeMachineResponseDto disableCoffeeMachine(int id) {
+        CoffeeMachine coffeeMachine = repository.findById(id).orElseThrow(
+                () -> new CoffeeMachineNotFound(String.format("Coffee machine with id %d not found", id)));
+        coffeeMachine.disable();
+        return mapper.toDto(coffeeMachine);
     }
 }
