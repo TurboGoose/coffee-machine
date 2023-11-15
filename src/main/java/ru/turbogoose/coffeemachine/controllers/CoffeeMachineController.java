@@ -55,11 +55,26 @@ public class CoffeeMachineController {
         return service.fillCoffeeMachineWithIngredients(id, ingredients);
     }
 
+    @PutMapping("/{id}/boil")
+    public CoffeeMachineResponseDto boilCoffeeInCoffeeMachine(@PathVariable int id) {
+        return service.boilCoffeeInCoffeeMachine(id);
+    }
+
     @ExceptionHandler(CoffeeMachineNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponseDto handleNotFound(RuntimeException exception) {
+        return composeResponse(exception.getMessage());
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponseDto handleIllegalState(RuntimeException exception) {
+        return composeResponse(exception.getMessage());
+    }
+
+    private ErrorResponseDto composeResponse(String message) {
         return ErrorResponseDto.builder()
-                .message(exception.getMessage())
+                .message(message)
                 .build();
     }
 }

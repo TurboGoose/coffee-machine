@@ -72,4 +72,12 @@ public class CoffeeMachineService {
                 });
         return mapper.toDto(coffeeMachine);
     }
+
+    @Transactional
+    public CoffeeMachineResponseDto boilCoffeeInCoffeeMachine(int id) {
+        CoffeeMachine coffeeMachine = repository.findById(id).orElseThrow(
+                () -> new CoffeeMachineNotFound(String.format("Coffee machine with id %d not found", id)));
+        coffeeMachine.boilCoffee();
+        return mapper.toDto(coffeeMachine);
+    }
 }
