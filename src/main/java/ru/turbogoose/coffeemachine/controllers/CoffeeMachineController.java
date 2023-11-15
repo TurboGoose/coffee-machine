@@ -60,6 +60,11 @@ public class CoffeeMachineController {
         return service.boilCoffeeInCoffeeMachine(id);
     }
 
+    @PutMapping("/{id}/pour")
+    public CoffeeMachineResponseDto pourCoffeeFromCoffeeMachine(@PathVariable int id) {
+        return service.pourCoffeeFromCoffeeMachine(id);
+    }
+
     @ExceptionHandler(CoffeeMachineNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponseDto handleNotFound(RuntimeException exception) {
