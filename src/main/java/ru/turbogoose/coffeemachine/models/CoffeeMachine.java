@@ -13,14 +13,14 @@ public class CoffeeMachine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "enabled")
+    private boolean enabled;
     @Column(name = "water_filled")
     private boolean waterFilled;
     @Column(name = "ground_coffee_filled")
     private boolean groundCoffeeFilled;
     @Column(name = "coffee_filled")
     private boolean coffeeFilled;
-    @Column(name = "enabled")
-    private boolean enabled;
 
     public void fillWater() {
         if (waterFilled) {
