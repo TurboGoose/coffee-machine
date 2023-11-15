@@ -1,12 +1,9 @@
 package ru.turbogoose.coffeemachine.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.turbogoose.coffeemachine.dtos.CoffeeMachineResponseDto;
 import ru.turbogoose.coffeemachine.dtos.CoffeeMachinesResponseDto;
-import ru.turbogoose.coffeemachine.dtos.ErrorResponseDto;
-import ru.turbogoose.coffeemachine.exceptions.CoffeeMachineNotFound;
 import ru.turbogoose.coffeemachine.services.CoffeeMachineService;
 import ru.turbogoose.coffeemachine.services.Ingredient;
 
@@ -63,23 +60,5 @@ public class CoffeeMachineController {
     @PutMapping("/{id}/pour")
     public CoffeeMachineResponseDto pourCoffeeFromCoffeeMachine(@PathVariable int id) {
         return service.pourCoffeeFromCoffeeMachine(id);
-    }
-
-    @ExceptionHandler(CoffeeMachineNotFound.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorResponseDto handleNotFound(RuntimeException exception) {
-        return composeResponse(exception.getMessage());
-    }
-
-    @ExceptionHandler(IllegalStateException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
-    public ErrorResponseDto handleIllegalState(RuntimeException exception) {
-        return composeResponse(exception.getMessage());
-    }
-
-    private ErrorResponseDto composeResponse(String message) {
-        return ErrorResponseDto.builder()
-                .message(message)
-                .build();
     }
 }
