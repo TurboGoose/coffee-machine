@@ -1,4 +1,4 @@
-# coffeemachine
+# Coffee machine
 Тестовое задание для компании AISA
 
 ## Формулировка
@@ -40,4 +40,9 @@ cd coffee-machine
 docker compose up
 ```
 
-Приложение запустится по адресу http://localhost:8080/swagger-ui
+4. Запустить приложение
+```shell
+./mvnw spring-boot:run
+```
+
+Приложение запустится по адресу http://localhost:8080/swagger-ui/index.html
