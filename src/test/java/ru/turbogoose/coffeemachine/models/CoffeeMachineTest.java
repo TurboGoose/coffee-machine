@@ -48,17 +48,17 @@ class CoffeeMachineTest {
     @Test
     public void pourGroundCoffeeWhenBoiled() {
         CoffeeMachine coffeeMachine = CoffeeMachine.builder()
-                .coffeeFilled(true)
+                .coffeeBoiled(true)
                 .build();
 
         coffeeMachine.pourCoffee();
-        assertThat(coffeeMachine.isCoffeeFilled(), is(false));
+        assertThat(coffeeMachine.isCoffeeBoiled(), is(false));
     }
 
     @Test
     public void pourGroundCoffeeWhenEmpty() {
         CoffeeMachine coffeeMachine = CoffeeMachine.builder()
-                .coffeeFilled(false)
+                .coffeeBoiled(false)
                 .build();
 
         assertThrows(IllegalStateException.class, coffeeMachine::boilCoffee);
@@ -94,7 +94,7 @@ class CoffeeMachineTest {
                 .enabled(true)
                 .waterFilled(true)
                 .groundCoffeeFilled(true)
-                .coffeeFilled(false)
+                .coffeeBoiled(false)
                 .build();
 
         coffeeMachine.boilCoffee();
@@ -102,7 +102,7 @@ class CoffeeMachineTest {
         assertThat(coffeeMachine.isEnabled() ,is(true));
         assertThat(coffeeMachine.isWaterFilled() ,is(false));
         assertThat(coffeeMachine.isGroundCoffeeFilled() ,is(false));
-        assertThat(coffeeMachine.isCoffeeFilled() ,is(true));
+        assertThat(coffeeMachine.isCoffeeBoiled() ,is(true));
     }
 
     @Test
@@ -111,7 +111,7 @@ class CoffeeMachineTest {
                 .enabled(false)
                 .waterFilled(true)
                 .groundCoffeeFilled(true)
-                .coffeeFilled(false)
+                .coffeeBoiled(false)
                 .build();
 
         assertThrows(IllegalStateException.class, coffeeMachine::boilCoffee);
@@ -123,7 +123,7 @@ class CoffeeMachineTest {
                 .enabled(true)
                 .waterFilled(false)
                 .groundCoffeeFilled(true)
-                .coffeeFilled(false)
+                .coffeeBoiled(false)
                 .build();
 
         assertThrows(IllegalStateException.class, coffeeMachine::boilCoffee);
@@ -135,7 +135,7 @@ class CoffeeMachineTest {
                 .enabled(true)
                 .waterFilled(true)
                 .groundCoffeeFilled(false)
-                .coffeeFilled(false)
+                .coffeeBoiled(false)
                 .build();
 
         assertThrows(IllegalStateException.class, coffeeMachine::boilCoffee);
@@ -147,7 +147,7 @@ class CoffeeMachineTest {
                 .enabled(true)
                 .waterFilled(true)
                 .groundCoffeeFilled(true)
-                .coffeeFilled(true)
+                .coffeeBoiled(true)
                 .build();
 
         assertThrows(IllegalStateException.class, coffeeMachine::boilCoffee);

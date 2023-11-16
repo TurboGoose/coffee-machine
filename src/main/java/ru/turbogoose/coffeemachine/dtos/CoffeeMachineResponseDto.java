@@ -8,5 +8,5 @@ public class CoffeeMachineResponseDto {
     private boolean enabled;
     private boolean waterFilled;
     private boolean groundCoffeeFilled;
-    private boolean coffeeFilled;
+    private boolean coffeeBoiled;
 }

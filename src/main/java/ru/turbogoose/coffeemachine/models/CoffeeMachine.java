@@ -19,8 +19,8 @@ public class CoffeeMachine {
     private boolean waterFilled;
     @Column(name = "ground_coffee_filled")
     private boolean groundCoffeeFilled;
-    @Column(name = "coffee_filled")
-    private boolean coffeeFilled;
+    @Column(name = "coffee_boiled")
+    private boolean coffeeBoiled;
 
     public void fillWater() {
         if (waterFilled) {
@@ -37,10 +37,10 @@ public class CoffeeMachine {
     }
 
     public void pourCoffee() {
-        if (!coffeeFilled) {
+        if (!coffeeBoiled) {
             throw new IllegalStateException("No coffee boiled");
         }
-        coffeeFilled = false;
+        coffeeBoiled = false;
     }
 
     public void boilCoffee() {
@@ -53,12 +53,12 @@ public class CoffeeMachine {
         if (!groundCoffeeFilled) {
             throw new IllegalStateException("No ground coffee");
         }
-        if (coffeeFilled) {
+        if (coffeeBoiled) {
             throw new IllegalStateException("Coffee already boiled");
         }
         waterFilled = false;
         groundCoffeeFilled = false;
-        coffeeFilled = true;
+        coffeeBoiled = true;
     }
 
     public void enable() {
