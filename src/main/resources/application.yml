@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: bebrauser
+    password: bebrapass
+    url: jdbc:postgresql://localhost:5432/coffee-machines-db
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.xml
+
+springdoc:
+  swagger-ui:
+    operationsSorter: alpha
