@@ -1,4 +1,4 @@
-package ru.turbogoose.coffeemachine.controllers;
+package ru.turbogoose.coffeemachine.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -8,11 +8,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import ru.turbogoose.coffeemachine.dtos.CoffeeMachineResponseDto;
-import ru.turbogoose.coffeemachine.dtos.CoffeeMachinesResponseDto;
-import ru.turbogoose.coffeemachine.dtos.ErrorResponseDto;
-import ru.turbogoose.coffeemachine.services.CoffeeMachineService;
-import ru.turbogoose.coffeemachine.services.Ingredient;
+import ru.turbogoose.coffeemachine.dto.CoffeeMachineResponseDto;
+import ru.turbogoose.coffeemachine.dto.CoffeeMachinesResponseDto;
+import ru.turbogoose.coffeemachine.dto.ErrorResponseDto;
+import ru.turbogoose.coffeemachine.service.CoffeeMachineService;
+import ru.turbogoose.coffeemachine.service.Ingredient;
 
 import java.util.List;
 

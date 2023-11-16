@@ -1,14 +1,14 @@
-package ru.turbogoose.coffeemachine.services;
+package ru.turbogoose.coffeemachine.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.turbogoose.coffeemachine.dtos.CoffeeMachineResponseDto;
-import ru.turbogoose.coffeemachine.dtos.CoffeeMachinesResponseDto;
-import ru.turbogoose.coffeemachine.exceptions.CoffeeMachineNotFound;
-import ru.turbogoose.coffeemachine.mappers.CoffeeMachineMapper;
-import ru.turbogoose.coffeemachine.models.CoffeeMachine;
-import ru.turbogoose.coffeemachine.repositories.CoffeeMachineRepository;
+import ru.turbogoose.coffeemachine.dto.CoffeeMachineResponseDto;
+import ru.turbogoose.coffeemachine.dto.CoffeeMachinesResponseDto;
+import ru.turbogoose.coffeemachine.exception.CoffeeMachineNotFound;
+import ru.turbogoose.coffeemachine.mapper.CoffeeMachineMapper;
+import ru.turbogoose.coffeemachine.model.CoffeeMachine;
+import ru.turbogoose.coffeemachine.repository.CoffeeMachineRepository;
 
 import java.util.List;
 

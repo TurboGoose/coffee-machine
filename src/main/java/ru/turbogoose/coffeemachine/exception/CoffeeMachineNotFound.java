@@ -1,4 +1,4 @@
-package ru.turbogoose.coffeemachine.exceptions;
+package ru.turbogoose.coffeemachine.exception;
 
 public class CoffeeMachineNotFound extends RuntimeException {
     public CoffeeMachineNotFound(String message) {

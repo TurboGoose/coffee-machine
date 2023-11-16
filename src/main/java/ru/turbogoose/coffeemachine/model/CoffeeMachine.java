@@ -1,4 +1,4 @@
-package ru.turbogoose.coffeemachine.models;
+package ru.turbogoose.coffeemachine.model;
 
 import jakarta.persistence.*;
 import lombok.*;

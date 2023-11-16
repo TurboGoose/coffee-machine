@@ -1,10 +1,10 @@
-package ru.turbogoose.coffeemachine.mappers;
+package ru.turbogoose.coffeemachine.mapper;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-import ru.turbogoose.coffeemachine.dtos.CoffeeMachineResponseDto;
-import ru.turbogoose.coffeemachine.models.CoffeeMachine;
+import ru.turbogoose.coffeemachine.dto.CoffeeMachineResponseDto;
+import ru.turbogoose.coffeemachine.model.CoffeeMachine;
 
 @Component
 @RequiredArgsConstructor

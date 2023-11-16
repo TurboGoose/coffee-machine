@@ -1,4 +1,4 @@
-package ru.turbogoose.coffeemachine.configs;
+package ru.turbogoose.coffeemachine.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

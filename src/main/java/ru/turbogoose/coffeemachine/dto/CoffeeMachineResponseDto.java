@@ -1,4 +1,4 @@
-package ru.turbogoose.coffeemachine.dtos;
+package ru.turbogoose.coffeemachine.dto;
 
 import lombok.Data;
 
